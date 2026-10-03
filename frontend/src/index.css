@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: #f5f0e8;
+    --ink: #111111;
+    --yellow: #ffd43b;
+    --purple: #a78bfa;
+    --green: #7cff6b;
+    --red: #ff6b6b;
+    --blue: #6cb6ff;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--yellow);
+    color: var(--ink);
+  }
+}
+
+@layer components {
+  .nb-card {
+    @apply border-[3px] border-ink bg-white shadow-neo rounded-md;
+  }
+
+  .nb-card-flat {
+    @apply border-[3px] border-ink bg-white rounded-md;
+  }
+
+  .nb-btn {
+    @apply inline-flex items-center justify-center gap-2 border-[3px] border-ink rounded-md
+      px-4 py-2 font-bold shadow-neo-sm transition-all duration-75 select-none
+      active:translate-x-[4px] active:translate-y-[4px] active:shadow-neo-none
+      disabled:opacity-40 disabled:active:translate-x-0 disabled:active:translate-y-0
+      disabled:active:shadow-neo-sm;
+  }
+
+  .nb-btn:hover:not(:disabled) {
+    @apply -translate-x-[1px] -translate-y-[1px];
+  }
+
+  .nb-input {
+    @apply w-full border-[3px] border-ink rounded-md bg-white px-3 py-2 font-medium
+      outline-none focus:shadow-neo-sm;
+  }
+
+  .nb-badge {
+    @apply inline-flex items-center gap-1 border-2 border-ink rounded-full px-2.5 py-0.5
+      text-xs font-bold uppercase tracking-wide;
+  }
+
+  .nb-table {
+    @apply w-full border-collapse text-sm;
+  }
+
+  .nb-table thead th {
+    @apply border-b-[3px] border-ink bg-paper px-3 py-2 text-left font-black uppercase text-xs tracking-wider;
+  }
+
+  .nb-table tbody td {
+    @apply border-b-2 border-ink/20 px-3 py-2 align-middle;
+  }
+
+  .nb-table tbody tr:hover {
+    @apply bg-neo-yellow/25;
+  }
+
+  .nb-title {
+    @apply font-black uppercase tracking-tight leading-none;
+  }
+
+  .nb-mono {
+    @apply font-mono text-xs;
+  }
+}

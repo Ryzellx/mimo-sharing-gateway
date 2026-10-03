@@ -1,0 +1,32 @@
+{$DOMAIN:localhost} {
+	encode gzip
+
+	# Gateway API + admin API + swagger
+	handle /v1/* {
+		reverse_proxy backend:8080
+	}
+	handle /api/* {
+		reverse_proxy backend:8080
+	}
+	handle /docs* {
+		reverse_proxy backend:8080
+	}
+	handle /openapi.json {
+		reverse_proxy backend:8080
+	}
+	handle /healthz {
+		reverse_proxy backend:8080
+	}
+
+	# SPA
+	handle {
+		reverse_proxy frontend:80
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+	}
+}
